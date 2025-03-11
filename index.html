@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDIDDY GAME</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            font-size: 50px;
+            color: #ff1493;
+            font-family: Arial, sans-serif;
+            margin-bottom: 100px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .shaft {
+            width: 40px;
+            height: 100px;
+            background: linear-gradient(to top, #d4a373 80%, #f4a8c1 100%);
+            border-radius: 20px;
+            transition: transform 0.2s;
+        }
+        .balls {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: -5px;
+            position: relative;
+        }
+        .ball {
+            width: 45px;
+            height: 45px;
+            background-color: #d4a373;
+            border-radius: 50%;
+            position: relative;
+        }
+        .milk {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            width: 8px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: milk-splash 1s infinite ease-in-out;
+        }
+        @keyframes milk-splash {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .color-buttons {
+            margin-top: 10px;
+        }
+        .color-buttons button {
+            margin: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .skin {
+            background-color: #d4a373;
+            color: white;
+        }
+        .brown {
+            background-color: #8b5a2b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDIDDY GAME</h1>
+    <div class="container">
+        <div class="shaft"></div>
+        <div class="milk"></div>
+        <div class="balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+    </div>
+    <button onclick="movePene()">Mover</button>
+    <div class="color-buttons">
+        <button class="skin" onclick="changeColor('#d4a373')">Normal</button>
+        <button class="brown" onclick="changeColor('#8b5a2b')">Nigga</button>
+    </div>
+
+    <script>
+        function movePene() {
+            const shaft = document.querySelector('.shaft');
+            shaft.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                shaft.style.transform = 'translateY(0px)';
+            }, 200);
+        }
+
+        function changeColor(color) {
+            document.querySelector('.shaft').style.background = `linear-gradient(to top, ${color} 80%, #f4a8c1 100%)`;
+            document.querySelectorAll('.ball').forEach(ball => {
+                ball.style.background = color;
+            });
+        }
+    </script>
+</body>
+</html>
